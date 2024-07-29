@@ -111,17 +111,96 @@ async def with_puree(message: types.Message):
     await message.reply(f"⛅️ Bugun Toshkentda Ob Havo \n\n 🌝 Kunduzi  {t_max3} \n 🌚Kechqurun {t_min3} \n\n 💫 Boʻlishi kutilmoqda ")
 
 
+t = requests.get('https://sinoptik.ua/погода-нукус')
+html_t = BS(t.content, 'html.parser')
+
+for el in html_t.select('#content'):
+    min4 = el.select('.temperature .min')[0].text
+    max4 = el.select('.temperature .max')[0].text
+    t_min4 = min4[4:]
+    t_max4 = max4[5:]
+@dp.message(F.text.lower() == "nukus")
+async def with_puree(message: types.Message):
+    await message.reply(f"⛅️ Bugun Nukusda Ob Havo \n\n 🌝 Kunduzi  {t_max4} \n 🌚Kechqurun {t_min4} \n\n 💫 Boʻlishi kutilmoqda ")
+
+
+
+
+t = requests.get('https://sinoptik.ua/погода-навои')
+html_t = BS(t.content, 'html.parser')
+
+for el in html_t.select('#content'):
+    min5 = el.select('.temperature .min')[0].text
+    max5 = el.select('.temperature .max')[0].text
+    t_min5 = min5[4:]
+    t_max5 = max5[5:]
+@dp.message(F.text.lower() == "navoi")
+async def with_puree(message: types.Message):
+    await message.reply(f"⛅️ Bugun Navoida Ob Havo \n\n 🌝 Kunduzi  {t_max5} \n 🌚Kechqurun {t_min5} \n\n 💫 Boʻlishi kutilmoqda ")
+
+
+t = requests.get('https://sinoptik.ua/погода-фергана')
+html_t = BS(t.content, 'html.parser')
+
+for el in html_t.select('#content'):
+    min6= el.select('.temperature .min')[0].text
+    max6 = el.select('.temperature .max')[0].text
+    t_min6 = min6[4:]
+    t_max6 = max6[5:]
+@dp.message(F.text.lower() == "farg'ona")
+async def with_puree(message: types.Message):
+    await message.reply(f"⛅️ Bugun farg'onada Ob Havo \n\n 🌝 Kunduzi  {t_max6} \n 🌚Kechqurun {t_min6} \n\n 💫 Boʻlishi kutilmoqda ")
+
+
+t = requests.get('https://sinoptik.ua/погода-самарканд')
+html_t = BS(t.content, 'html.parser')
+
+for el in html_t.select('#content'):
+    min7 = el.select('.temperature .min')[0].text
+    max7 = el.select('.temperature .max')[0].text
+    t_min7 = min7[4:]
+    t_max7 = max7[5:]
+@dp.message(F.text.lower() == "samarqand")
+async def with_puree(message: types.Message):
+    await message.reply(f"⛅️ Bugun Samarqandda Ob Havo \n\n 🌝 Kunduzi  {t_max7} \n 🌚Kechqurun {t_min7} \n\n 💫 Boʻlishi kutilmoqda ")
+
+
+t = requests.get('https://sinoptik.ua/погода-джизак')
+html_t = BS(t.content, 'html.parser')
+
+for el in html_t.select('#content'):
+    min8 = el.select('.temperature .min')[0].text
+    max8 = el.select('.temperature .max')[0].text
+    t_min8 = min8[4:]
+    t_max8 = max8[5:]
+@dp.message(F.text.lower() == "jizzax")
+async def with_puree(message: types.Message):
+    await message.reply(f"⛅️ Bugun Jizzaxda Ob Havo \n\n 🌝 Kunduzi  {t_max8} \n 🌚Kechqurun {t_min8} \n\n 💫 Boʻlishi kutilmoqda ")
+
+
+
+
+
+
+
 @dp.message(F.text.lower() == "🌦 ob - havo")
 async def with_puree(message: types.Message):
 
     knopka = [
             [
                 types.KeyboardButton(text="Urganch"),
-                types.KeyboardButton(text="Andijon"),
+                types.KeyboardButton(text="Toshkent"),
+                types.KeyboardButton(text="Nukus"),
         ],
         [
                 types.KeyboardButton(text="Buxoro"),
-                types.KeyboardButton(text="Toshkent"),
+                types.KeyboardButton(text="Andijon"),
+                types.KeyboardButton(text="Navoi"),
+        ],
+        [
+                types.KeyboardButton(text="Samarqand"),
+                types.KeyboardButton(text="Farg'ona"),
+                types.KeyboardButton(text="Jizzax"),
         ]
         ]
 
